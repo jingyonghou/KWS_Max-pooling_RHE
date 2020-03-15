@@ -11,7 +11,7 @@ stage=0
 nj=80
 
 if [ -z $1 ]; then
-    source_data_dir=/home/work_nfs3/jyhou/my_data/mobvoi_hotword_to_openslr/mobvoi_hotword_dataset
+    source_data_dir=my_data/mobvoi_hotword_to_openslr/mobvoi_hotword_dataset
 else
     source_data_dir=$1
 fi

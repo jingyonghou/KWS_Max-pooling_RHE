@@ -58,7 +58,7 @@ num_n=1
 gamma_p=0.0 # if gamma = 0, that means we use CE, otherwise, we use Focal loss
 gamma_n=0.0 # if gamma = 0, that means we use CE, otherwise, we use Focal loss
 gpu_num=1
-spec_augment=0
+spec_augment=1
 constraint=2
 constraint_type="edge"
 constraint_l=30

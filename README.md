@@ -20,3 +20,14 @@ You should know basic knowledge of Kaldi before looking at the run script. I use
 
 ### You may first follow run_data_prepare.sh to prepare the data and extract the features. Then, please follow the run_train_proposed_public_ticmini2.sh script to learn how to run the code.
 
+## Results on public dataset: https://www.openslr.org/87 
+This dataset is different with the dataset used in above paper, the positive data is identical with the positive data in the paper, but the negative data is newlly recorded and totally different with the negative data in the paper.
+
+Using default configuration in the paper:
+
+
+
+##TODO: 
+* Data Augmentation experiment
+* Further tuning of hyperparameters on the public dataset
+

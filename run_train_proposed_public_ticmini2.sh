@@ -168,7 +168,7 @@ for keyword in hixiaowen nihaowenwen; do
 	fi
 	
 	if [ $stage -le 4 ]; then
-	    python compute_roc.py --sliding-window=100 \
+	    python compute_det.py --sliding-window=100 \
 	                          --start-threshold=0.0 \
 	                          --end-threshold=1.0 \
 	                          --threshold-step=0.01 \
@@ -224,7 +224,7 @@ for keyword in hixiaowen nihaowenwen; do
 	fi
 	
 	if [ $stage -le 7 ]; then
-	    python compute_roc.py --sliding-window=100 \
+	    python compute_det.py --sliding-window=100 \
 	                          --start-threshold=0.0 \
 	                          --end-threshold=1.0 \
 	                          --threshold-step=0.01 \

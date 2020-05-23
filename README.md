@@ -27,7 +27,7 @@ Using default configuration in the paper and without any data angumentation:
 
 <img src="./det_curves/gru_rhe.png" width = "300" height = "300" alt="DET Curs" align=center />
 
-FFRs with FAR fixed at once per hour:
+FRRs with FAR fixed at once per hour:
 * Hi Xiaowen: 1.48%
 * Nihao Wenwen: 1.21%  
 ## TODO: 

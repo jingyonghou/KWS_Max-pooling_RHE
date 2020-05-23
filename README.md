@@ -25,11 +25,11 @@ This dataset is different with the dataset used in above paper, the positive dat
 
 Using default configuration in the paper and without any data angumentation:
 
-![DET Curs](./det_curves/gru_rhe.png)
+<img src="./det_curves/gru_rhe.png" width = "300" height = "300" alt="DET Curs" align=center />
 
 FFRs with FAR fixed at once per hour:
-Hi Xiaowen: 1.48%
-Nihao Wenwen: 1.21%  
+* Hi Xiaowen: 1.48%
+* Nihao Wenwen: 1.21%  
 ## TODO: 
 * Data Augmentation experiment
 * Further tuning of hyperparameters on the public dataset

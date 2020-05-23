@@ -68,7 +68,7 @@ random_ng="False"
 debug="-m pdb"
 debug=""
 do_test="1"
-save_dir="$path/exp/${proto}_random-ng${random_ng}_sa${spec_augment}_ohem${ohem}_ratio${max_ratio}_constraint${constraint}_ct${constraint_type}_cl${constraint_l}_cr${constraint_r}_num-p${num_p}_num-n${num_n}_${layer_type}_nl${num_layers}_hd${hidden_dim}_opt${optimizer}_bs${batch_size}_lr${learning_rate}_gamma-p${gamma_p}_gamma-n${gamma_n}_hf${halving_factor}_wd${weight_decay}_dp${dropout}_lc${left_context}_rc${right_context}_clamp${clamp}_seed${seed}"
+save_dir="$path/exp/${proto}_random-ng${random_ng}_sa${spec_augment}_rhe${ohem}_ratio${max_ratio}_constraint${constraint}_ct${constraint_type}_cl${constraint_l}_cr${constraint_r}_num-p${num_p}_num-n${num_n}_${layer_type}_nl${num_layers}_hd${hidden_dim}_opt${optimizer}_bs${batch_size}_lr${learning_rate}_gamma-p${gamma_p}_gamma-n${gamma_n}_hf${halving_factor}_wd${weight_decay}_dp${dropout}_lc${left_context}_rc${right_context}_clamp${clamp}_seed${seed}"
 mkdir -p $save_dir
 
 echo "Input dim: $input_dim"

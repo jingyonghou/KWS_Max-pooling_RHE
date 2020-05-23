@@ -7,7 +7,7 @@ echo "$0 $@"
                                                                                 
 export LC_ALL=C
                                                                                 
-stage=0
+stage=1
 nj=80
 
 if [ -z $1 ]; then
@@ -43,7 +43,7 @@ src_dir=data
 fbank_dir=fbank
 
 if [ $stage -le 1 ]; then
-    for x in train;
+    for x in train dev test;
     do
         mkdir -p $fbank_dir/$x
         utils/copy_data_dir.sh $src_dir/$x $fbank_dir/$x

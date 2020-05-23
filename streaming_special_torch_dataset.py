@@ -110,7 +110,7 @@ def collate_fn(batch):
             act_len = (batch[i][1].shape)[0]
             pad_len = max_len - act_len
             feats_padded.append(np.pad(batch[i][1], ((WINDOW_SIZE, pad_len), (0, 0)), "constant"))
-            lengths.append(max_len)
+            lengths.append(act_len)
         return keys, torch.from_numpy(np.array(lengths)), torch.from_numpy(np.array(feats_padded))
 
     elif len(batch[0]) == 3:
@@ -128,7 +128,7 @@ def collate_fn(batch):
             pad_len = max_len - act_len
             feats_padded.append(np.pad(batch[i][1], ((WINDOW_SIZE, pad_len), (0, 0)), "constant") )
             label_padded.append(batch[i][2])
-            lengths.append(max_len)
+            lengths.append(act_len)
         return keys, torch.from_numpy(np.array(lengths)), torch.from_numpy(np.array(feats_padded)), label_padded
         
     else:

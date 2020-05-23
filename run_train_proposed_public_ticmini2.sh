@@ -11,14 +11,14 @@ label_dir=$path/info
 if [ $stage -le 0 ]; then
 	for x in train dev test; do
 		x=${x}_cmvn
-		#feat-to-len scp:$data/$x/feats.scp ark,t:$data/$x/lens.scp
+		feat-to-len scp:$data/$x/feats.scp ark,t:$data/$x/lens.scp
 		python prepare_torch_scp.py $data/$x/feats.scp $label_dir/labels.scp $data/$x/lens.scp 1500 $data/$x/torch.scp
 	done
 fi
 for seed in 11; do # 22 33 44 55; do
-for ohem in 200; do #50 10000 25 15 0; do 
-for max_ratio in 10; do
-for learning_rate in 0.010; do 
+for ohem in 50; do #50 10000 25 15 0; do 
+for max_ratio in 10 20; do
+for learning_rate in 0.010 0.008 0.004 0.020; do 
 train_scp=$data/train_cmvn/torch.scp
 dev_scp=$data/dev_cmvn/torch.scp
 test_scp=$data/test_cmvn/torch.scp
@@ -58,7 +58,7 @@ num_n=1
 gamma_p=0.0 # if gamma = 0, that means we use CE, otherwise, we use Focal loss
 gamma_n=0.0 # if gamma = 0, that means we use CE, otherwise, we use Focal loss
 gpu_num=1
-spec_augment=1
+spec_augment=0
 constraint=2
 constraint_type="edge"
 constraint_l=30
@@ -81,7 +81,8 @@ echo "Dev Scp: ${dev_scp}"
 head $dev_scp -n 1
 
 if [ $stage -le 1 ]; then
-    CUDA_VISIBLE_DEVICES=$gpu_num python $debug train_max_pooling_binary.py \
+    #CUDA_VISIBLE_DEVICES=$gpu_num python $debug train_max_pooling_binary.py \
+    $cuda_cmd $save_dir/train_log.txt python $debug train_max_pooling_binary.py \
             --seed=${seed} --train=1 --test=0 \
             --encoder=$layer_type \
 			--random-n=$random_ng \
@@ -118,16 +119,16 @@ if [ $stage -le 1 ]; then
             --multi-gpu=0 \
             --train-scp=$train_scp \
             --dev-scp=$dev_scp \
-            --num-workers=4 \
+            --num-workers=5 \
             --save-dir=$save_dir \
-            --log-interval=10   | tee $save_dir/log.txt
+            --log-interval=10   #| tee $save_dir/log.txt
 fi
 
 best_model=$save_dir/final.mdl 
 decode_output=ark:$save_dir/dev_post.ark
 if [ $stage -le 2 ]; then
     # test and get roc
-    CUDA_VISIBLE_DEVICES=$gpu_num python $debug train_max_pooling_binary.py \
+    $cuda_cmd $save_dir/dev_log.txt python $debug train_max_pooling_binary.py \
             --seed=10 --train=0 --test=1 \
             --encoder=$layer_type \
             --input-dim=$input_dim \
@@ -142,15 +143,14 @@ if [ $stage -le 2 ]; then
             --use-cuda=1 \
             --multi-gpu=0 \
             --test-scp=$dev_scp \
-            --num-workers=3 \
+            --num-workers=5 \
             --output-file=$decode_output \
-            --log-interval=100 | tee -a $save_dir/log.txt
+            --log-interval=10 | tee -a $save_dir/log.txt
 fi
 #hixiaowen
 for keyword in hixiaowen nihaowenwen; do
 	if [ $keyword == hixiaowen ]; then
 		ignore_keyword=0; negative_duration=11.81; num_positive=3680; tag=""
-	#ignore_keyword=1; negative_duration=17.78; num_positive=3680; tag=""
 	#nihaowenwen
 	elif [ $keyword == nihaowenwen ]; then
 		ignore_keyword=0; negative_duration=11.77; num_positive=3677; tag=""
@@ -182,7 +182,8 @@ if [ $do_test == 1 ]; then
 decode_output=ark:$save_dir/test_post.ark
 if [ $stage -le 5 ]; then
     # test and get roc
-    CUDA_VISIBLE_DEVICES=$gpu_num python $debug train_max_pooling_binary.py \
+    #CUDA_VISIBLE_DEVICES=$gpu_num python $debug train_max_pooling_binary.py \
+    $cuda_cmd $save_dir/test_log.txt python $debug train_max_pooling_binary.py \
             --seed=10 --train=0 --test=1 \
             --encoder=$layer_type \
             --input-dim=$input_dim \
@@ -197,8 +198,9 @@ if [ $stage -le 5 ]; then
             --use-cuda=1 \
             --multi-gpu=0 \
             --test-scp=$test_scp \
+            --num-workers=5 \
             --output-file=$decode_output \
-            --log-interval=100 | tee -a $save_dir/log.txt
+            --log-interval=10 | tee -a $save_dir/log.txt
 fi
 for keyword in hixiaowen nihaowenwen; do
 	# hixiaowen

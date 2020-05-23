@@ -337,8 +337,7 @@ def main():
             collate_fn=collate_fn)
 
         for epoch in range(args.max_epochs):
-#            cur_tr_loss = train(args, model, device, train_loader, optimizer, epoch)
-            cur_tr_loss = 0
+            cur_tr_loss = train(args, model, device, train_loader, optimizer, epoch)
             cur_val_loss = validate(args, model, device, dev_loader, epoch)
             rel_impr = (prev_val_loss - cur_val_loss) / prev_val_loss
 

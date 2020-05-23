@@ -85,14 +85,14 @@ if [ $stage -le 1 ]; then
     $cuda_cmd $save_dir/train_log.txt python $debug train_max_pooling_binary.py \
             --seed=${seed} --train=1 --test=0 \
             --encoder=$layer_type \
-    		--random-n=$random_ng \
+    	    --random-n=$random_ng \
             --spec-augment=$spec_augment \
-    		--ohem=$ohem \
-    		--max-ratio=$max_ratio \
+    	    --ohem=$ohem \
+    	    --max-ratio=$max_ratio \
             --constraint=$constraint \
-    		--constraint-type=$constraint_type \
-    		--cl=$constraint_l \
-    		--cr=$constraint_r \
+    	    --constraint-type=$constraint_type \
+    	    --cl=$constraint_l \
+    	    --cr=$constraint_r \
             --num-p=$num_p \
             --num-n=$num_n \
             --input-dim=$input_dim \
@@ -106,11 +106,11 @@ if [ $stage -le 1 ]; then
             --min-epochs=15 \
             --batch-size=$batch_size \
             --learning-rate=$learning_rate \
-    		--optimizer=${optimizer} \
-    		--init-weight-decay=$weight_decay \
-    		--gamma-p=$gamma_p \
-    		--gamma-n=$gamma_n \
-    		--clamp=$clamp \
+    	    --optimizer=${optimizer} \
+    	    --init-weight-decay=$weight_decay \
+    	    --gamma-p=$gamma_p \
+    	    --gamma-n=$gamma_n \
+    	    --clamp=$clamp \
             --halving-factor=$halving_factor \
             --load-model=$previous_model \
             --start-halving-impr=0.01 \

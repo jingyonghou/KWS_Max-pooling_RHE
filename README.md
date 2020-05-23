@@ -28,8 +28,8 @@ Using default configuration in the paper and without any data angumentation:
 <img src="./det_curves/gru_rhe.png" width = "300" height = "300" alt="DET Curves" align=center />
 
 FRRs with FAR fixed at once per hour:
-* Hi Xiaowen: 1.48%
-* Nihao Wenwen: 1.21%  
+* Hi Xiaowen: 0.62%
+* Nihao Wenwen: 0.50%  
 ## TODO: 
 * Data Augmentation experiment
 * Further tuning of hyperparameters on the public dataset

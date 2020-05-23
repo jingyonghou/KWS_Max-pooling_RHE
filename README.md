@@ -23,7 +23,7 @@ You should know basic knowledge of Kaldi before looking at the run script. I use
 ## Results on public dataset: https://www.openslr.org/87 
 This dataset is different with the dataset used in above paper, the positive data is identical with the positive data in the paper, but the negative data is newlly recorded and totally different with the negative data in the paper.
 
-Using default configuration in the paper and without any data angumentation:
+Using default configuration in the paper and without any data angumentation (GRU):
 
 <img src="./det_curves/gru_rhe.png" width = "300" alt="DET Curves" align=center />
 

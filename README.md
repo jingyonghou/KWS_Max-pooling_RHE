@@ -23,11 +23,13 @@ You should know basic knowledge of Kaldi before looking at the run script. I use
 ## Results on public dataset: https://www.openslr.org/87 
 This dataset is different with the dataset used in above paper, the positive data is identical with the positive data in the paper, but the negative data is newlly recorded and totally different with the negative data in the paper.
 
-Using default configuration in the paper:
+Using default configuration in the paper and without any data angumentation:
 ![image](https://github.com/jingyonghou/KWS_Max-pooling_RHE/blob/master/det_curves/gru_rhe.png)
 
-
-##TODO: 
+FFRs with FAR fixed at once per hour:
+Hi Xiaowen: 1.48%
+Nihao Wenwen: 1.21%  
+## TODO: 
 * Data Augmentation experiment
 * Further tuning of hyperparameters on the public dataset
 

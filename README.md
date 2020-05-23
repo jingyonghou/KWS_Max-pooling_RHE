@@ -25,7 +25,7 @@ This dataset is different with the dataset used in above paper, the positive dat
 
 Using default configuration in the paper and without any data angumentation:
 
-<img src="./det_curves/gru_rhe.png" width = "300" height = "300" alt="DET Curves" align=center />
+<img src="./det_curves/gru_rhe.png" width = "300" alt="DET Curves" align=center />
 
 FRRs with FAR fixed at once per hour:
 * Hi Xiaowen: 0.62%

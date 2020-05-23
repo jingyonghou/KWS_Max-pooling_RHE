@@ -13,8 +13,8 @@ Please cite the work below if you want to use the code or want to do research re
 
 ## Running environment
 * Python 2.7.15
-* pytorch 0.4.1
-* CUDA 8.0 or higher
+* pytorch 1.4.0
+* CUDA 10.0 or higher
 * Kaldi
 
 You should know basic knowledge of Kaldi before looking at the run script. I use Kaldi to extract Fbank features and do a global CMVN using the statictics from all training set. You should add cmd.sh, path.sh, steps and utils to your working dir before you run the script.
